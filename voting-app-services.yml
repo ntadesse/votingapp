@@ -1,7 +1,7 @@
 apiVersion: v1 
 kind: Service
 metadata:
-  name: voting-service
+  name: vot-service
   namespace: vote
   labels:
     name: voting-app-service
@@ -12,6 +12,6 @@ spec:
     app: demo-voting-app 
   type: NodePort 
   ports:
-  - port: 80
+  - port: 5000
     targetPort: 80
-    nodePort: 30004
+    nodePort: 31000
