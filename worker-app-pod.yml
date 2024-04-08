@@ -4,7 +4,7 @@ metadata:
   name: worker-app-pod
   namespace: vote
   labels:
-    name: worker-pod
+    name: worker-app-pod
     app: demo-voting-app 
 spec:
   containers:
