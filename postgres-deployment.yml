@@ -32,7 +32,7 @@ spec:
       env:
       # Consider using Kubernetes Secrets to manage credentials securely
       - name: POSTGRES_USER
-        #value: "postgres"  # Replace with reference to Secret if used
+        value: "postgres"  # Replace with reference to Secret if used
       - name: POSTGRES_PASSWORD
-        #value: "postgres"  # Replace with reference to Secret if used
+        value: "postgres"  # Replace with reference to Secret if used
 # Review POSTGRESS_HOST_METHOD for security implications in production
