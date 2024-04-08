@@ -1,24 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: worker
-  namespace: vote
+  name: worker  # Unique name for the deployment
+  namespace: vote  # Namespace where the deployment resides
   labels:
-    app: demo-voting-app
+    app: demo-voting-app  # Label for filtering and grouping
 spec:
-  replicas: 1
+  replicas: 1           # Number of pod replicas
   selector:
     matchLabels:
-      name: worker-app-pod
-      app: demo-voting-app
+      name: worker-app-pod  # Selects pods with this label
+      app: demo-voting-app  # Additional label for filtering
   template:
     metadata:
-      name: worker-app-pod
+      name: worker-app-pod  # Name for pod templates
       labels:
-        name: worker-app-pod
-        app: demo-voting-app
-
+        name: worker-app-pod  # Label for pods created by this deployment
+        app: demo-voting-app  # Additional label for filtering
     spec:
       containers:
       - name: worker-app
         image: kodekloud/examplevotingapp_worker
+        # Consider adding resource requests and limits for the container
+        resources:
+          requests:
+            cpu: 100m  # Example request for 100 millicores
+            memory: "256Mi"  # Example request for 256 megabytes
+        # Consider adding a readiness probe to determine container health
+        readinessProbe:
+          httpGet:
+            path: /health  # Replace with the path for a health check endpoint in your worker app
+            port: 8080  # Replace with the port where the health check endpoint is exposed (if different)
+          initialDelaySeconds: 15  # Optional: Delay before starting the probe
+          timeoutSeconds: 5  # Optional: Time for probe to reach the endpoint
