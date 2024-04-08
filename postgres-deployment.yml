@@ -34,4 +34,4 @@ spec:
             value: "postgres"
           - name: POSTGRES_PASSWORD
             value: "postgres"
-            POSTGRESS_HOST_METHOD=trust
+          POSTGRESS_HOST_METHOD=trust
