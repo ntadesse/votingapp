@@ -23,10 +23,12 @@ spec:
         image: redis:alpine
         volumeMounts:
         - name: redis-data
-          mountPath:/data
+          mountPath: /data
         ports:
         - containerPort: 6379
       volumes:
       - name: redis-data
         emptyDir: {}
+        # Use a Persistent Volume Claim for persistent data
+        # (requires creating a separate PVC object with desired storage details)
        
