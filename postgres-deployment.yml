@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-deployment
-  namespace: vote
+  name: db-deployment  # Unique name for the deployment
+  namespace: vote      # Namespace where the deployment resides
   labels:
-    app: demo-voting-app
+    app: demo-voting-app  # Label for filtering and grouping
 spec:
-  replicas: 1
+  replicas: 1           # Number of pod replicas in the deployment
   selector:
     matchLabels:
-      name: postgres-pod
-      app: demo-voting-app
+      name: postgres-pod  # Selects pods with this label
+      app: demo-voting-app  # Additional label for filtering
   template:
     metadata:
-      name: postgres-pod
+      name: postgres-pod  # Name for pod templates
       labels:
-        name: postgres-pod
-        app: demo-voting-app
+        name: postgres-pod  # Label for pods created by this deployment
+        app: demo-voting-app  # Additional label for filtering
     spec:
       containers:
       - name: postgres
@@ -28,10 +28,11 @@ spec:
           mountPath: /var/lib/postgresql/data
       volumes:
       - name: db-data
-        emptyDir: {}  
-        env:
-          - name: POSTGRES_USER
-            value: "postgres"
-          - name: POSTGRES_PASSWORD
-            value: "postgres"
-          POSTGRESS_HOST_METHOD=trust
+        emptyDir: {}  # EmptyDir volume for persistent data (consider persistence for important data)
+      env:
+      # Consider using Kubernetes Secrets to manage credentials securely
+      - name: POSTGRES_USER
+        #value: "postgres"  # Replace with reference to Secret if used
+      - name: POSTGRES_PASSWORD
+        #value: "postgres"  # Replace with reference to Secret if used
+# Review POSTGRESS_HOST_METHOD for security implications in production
