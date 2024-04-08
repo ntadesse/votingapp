@@ -35,4 +35,6 @@ spec:
         value: "postgres"  # Replace with reference to Secret if used
       - name: POSTGRES_PASSWORD
         value: "postgres"  # Replace with reference to Secret if used
+      - name: POSTGRESS_HOST_METHOD
+        value: "trust" 
 # Review POSTGRESS_HOST_METHOD for security implications in production
