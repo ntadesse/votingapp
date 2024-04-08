@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: voting-app-deployment
+  name: vote-deployment
   namespace: vote
   labels:
     app: demo-voting-app
@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: dockersamples/examplevotingapp_vote
+        image: kodekloud/examplevotingapp_vote
         ports:
         - containerPort: 80
