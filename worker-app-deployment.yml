@@ -9,7 +9,7 @@ spec:
   replicas: 1           # Number of pod replicas
   selector:
     matchLabels:
-      name: worker-app-pod  # Selects pods with this label
+      name: worker-pod  # Selects pods with this label
       app: demo-voting-app  # Additional label for filtering
   template:
     metadata:
