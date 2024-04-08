@@ -17,7 +17,6 @@ spec:
       labels:
         name: redis-pod
         app: demo-voting-app
-
     spec:
       containers:
       - name: redis
@@ -25,8 +24,9 @@ spec:
         volumeMounts:
         - name: redis-data
           mountPath:/data
-        volumes:
-        - name: redis-data
-          emptyDir: {}
         ports:
         - containerPort: 6379
+      volumes:
+      - name: redis-data
+        emptyDir: {}
+       
